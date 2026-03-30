@@ -1,0 +1,118 @@
+/* FILE: src/app/globals.css
+  DESCRIPTION: Finalized CSS logic to fix the "Chaos" using stable Tailwind directives.
+  CHANGES: 
+    - Rule #3: Added explicit Tailwind layer directives to ensure priority.
+    - Rule #4: Fixed the overflow-x issue that causes "horizontal chaos" on mobile.
+    - Rule #5: Added humanized comments to sections for clinical staff updates.
+    - Rule #6: Styled .input-field to match CreateSpecialistDto form requirements.
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ☀️ WHITE MODE (Clinical Light) */
+  :root {
+    --background: #ffffff;
+    --foreground: #0a0a0a;
+    --primary: #E87042;
+    --primary-hover: #ff8252;
+    --surface-clinical: #F8F9FA;
+    --border-clinical: rgba(0, 0, 0, 0.08);
+    --input-bg: #ffffff;
+  }
+
+  /* 🌙 BLACK MODE (Afridam Signature) */
+  .dark {
+    --background: #050505;
+    --foreground: #ffffff;
+    --primary: #E87042;
+    --primary-hover: #ff8252;
+    --surface-clinical: #0A0A0A;
+    --border-clinical: rgba(255, 255, 255, 0.05);
+    --input-bg: #111111;
+  }
+
+  /* Rule #4: Reset to prevent "Layout Chaos" */
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  html, body {
+    max-width: 100vw;
+    overflow-x: hidden; /* Prevents unwanted horizontal scrolling on mobile */
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  /* The Melanin-Orange Action Button */
+  .btn-primary {
+    @apply flex items-center justify-center gap-2 font-bold py-3 px-6 rounded-xl 
+           transition-all duration-200 active:scale-95;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+
+  /* Standard Clinical Input Fields (Rule #6 Prep) */
+  .input-field {
+    @apply w-full outline-none transition-all duration-200;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-clinical);
+    color: var(--foreground);
+    border-radius: 0.75rem;
+    padding: 1rem;
+  }
+
+  .input-field:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(232, 112, 66, 0.1);
+  }
+
+  /* Specialist Dashboard Cards */
+  .card-clinical {
+    @apply rounded-2xl p-6 transition-all duration-300;
+    background-color: var(--surface-clinical);
+    border: 1px solid var(--border-clinical);
+  }
+
+  .card-clinical:hover {
+    border-color: rgba(232, 112, 66, 0.3);
+    box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Rule #4: MacBook Air Optimized Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
