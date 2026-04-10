@@ -11,6 +11,7 @@
 
 import React, { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Link from 'next/link';
 import { Lock, Mail, Eye, EyeOff, ShieldCheck } from 'lucide-react';
 
 function LoginContent() {
@@ -117,7 +118,7 @@ function LoginContent() {
         {/* Rule #5: Humanized Onboarding Link */}
         <div className="mt-8 text-center pt-6 border-t border-white/5">
           <p className="text-gray-500 text-sm">
-            Not a partner yet? <button className="text-white font-semibold hover:text-[#E87042]">Apply for Admission</button>
+            Not a partner yet? <Link href="/auth/register" className="text-white font-semibold hover:text-[#E87042]">Apply for Admission</Link>
           </p>
         </div>
       </div>
